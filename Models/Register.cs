@@ -24,8 +24,6 @@ namespace MIS4200Team6.Models
         [Phone]
         public string PhoneNumber { get; set; }
         [Display(Name = "Office")]
-        public string Studio { get; set; }
-        [Display(Name = "Current position")]
         public string Position { get; set; }
         [Display(Name = "Hire Date")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
