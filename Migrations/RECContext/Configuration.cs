@@ -11,6 +11,8 @@ namespace MIS4200Team6.Migrations.RECContext
         {
             AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\RECContext";
+            ContextKey = "MIS4200Team6.DAL.EmployeeContext";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MIS4200Team6.DAL.EmployeeContext context)

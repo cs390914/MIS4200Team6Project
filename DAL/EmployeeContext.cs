@@ -11,7 +11,8 @@ namespace MIS4200Team6.DAL
     {
         public EmployeeContext() : base("name=DefaultConnection")
         {
-            
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EmployeeContext,
+          MIS4200Team6.Migrations.RECContext.Configuration>("DefaultConnection"));
             // this method is a 'constructor' and is called when a new context is created
             // the base attribute says which connection string to use
         }
