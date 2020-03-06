@@ -1,4 +1,4 @@
-﻿@model MIS4200Team6.Models.Register
+﻿@model MIS4200Team6.Models.Registrar
 
 @{
     ViewBag.Title = "Create";
@@ -6,13 +6,12 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Register</h4>
+        <h4>Registrar</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -74,7 +73,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

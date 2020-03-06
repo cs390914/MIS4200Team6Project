@@ -170,7 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\RegistrarsController.cs" />
     <Compile Include="DAL\EmployeeContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,7 +179,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\Registrar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -240,11 +240,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Registers\Create.cshtml" />
-    <Content Include="Views\Registers\Delete.cshtml" />
-    <Content Include="Views\Registers\Details.cshtml" />
-    <Content Include="Views\Registers\Edit.cshtml" />
-    <Content Include="Views\Registers\Index.cshtml" />
+    <Content Include="Views\Registrars\Create.cshtml" />
+    <Content Include="Views\Registrars\Delete.cshtml" />
+    <Content Include="Views\Registrars\Details.cshtml" />
+    <Content Include="Views\Registrars\Edit.cshtml" />
+    <Content Include="Views\Registrars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

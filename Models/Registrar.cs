@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MIS4200Team6.Models
 {
-    public class Register
+    public class Registrar
     {
         [Required]
         public Guid ID { get; set; }
