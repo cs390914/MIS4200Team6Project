@@ -1,11 +1,13 @@
 ﻿@model MIS4200Team6.Models.Registrar
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Profile";
 }
 
 <h2>Edit</h2>
-
+<div class="alert alert-success">
+    <strong>Success!</strong> Succes in changing the info.
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
