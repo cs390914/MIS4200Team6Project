@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Migrations\RECContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CoreValueLeaderBoard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Registrar.cs" />
