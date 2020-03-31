@@ -23,9 +23,10 @@ namespace MIS4200Team6.Models
         [Display(Name = "Primary Phone")]
         [Phone]
         public string PhoneNumber { get; set; }
-        [Display(Name = "Office")]
+        [Display(Name = "Job Title")]
+
         public string Position { get; set; }
-        [Display(Name = "Hire Date")]
+        [Display(Name = "Start Date")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
 
