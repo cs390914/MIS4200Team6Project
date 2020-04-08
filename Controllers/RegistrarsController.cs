@@ -15,12 +15,31 @@ namespace MIS4200Team6.Controllers
     public class RegistrarsController : Controller
     {
         private EmployeeContext db = new EmployeeContext();
-        private object regeistar;
+        private object register;
 
         // GET: Registrars
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-
+            var userSearch = from o in db.Register select o;
+            string[] userNames; // declare the array to hold pieces of the string
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                userNames = searchString.Split(' '); // split the string on spaces
+                if (userNames.Count() == 1) // there is only one string so it could be
+                                            // either the first or last name
+                {
+                    userSearch = userSearch.Where(c => c.lastName.Contains(searchString) ||
+                   c.firstName.Contains(searchString)).OrderBy(c => c.lastName);
+                }
+                else //if you get here there were at least two strings so extract them and test
+                {
+                    string s1 = userNames[0];
+                    string s2 = userNames[1];
+                    userSearch = userSearch.Where(c => c.lastName.Contains(s2) &&
+                   c.firstName.Contains(s1)).OrderBy(c => c.lastName); // note that this uses &&, not ||
+                }
+                return View(userSearch.ToList());
+            }
             return View(db.Register.ToList());
         }
 
