@@ -5,9 +5,7 @@
 }
 
 <h2>Edit</h2>
-<div class="alert alert-success">
-    <strong>Success!</strong> Succes in changing the info.
-</div>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -74,6 +72,8 @@
     </div>
 }
 
+
 <div>
     @Html.ActionLink("Back to List", "Index")
+    
 </div>
