@@ -1,7 +1,7 @@
 ﻿@model MIS4200Team6.Models.Registrar
 
 @{
-    ViewBag.Title = "Info";
+    ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
@@ -40,6 +40,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OGroup)
         </dd>
 
         <dt>

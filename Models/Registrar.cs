@@ -24,6 +24,35 @@ namespace MIS4200Team6.Models
         [Phone]
         public string PhoneNumber { get; set; }
         [Display(Name = "Job Title")]
+       
+        
+        public string OperatingGroup { get; set; }
+        [Display (Name = " Operating group")]
+
+        public Group OGroup { get; set; }
+
+        public enum Group
+        {
+            CustomerExperienceDesign,
+            DataAnalytics,
+            Digital,
+            EnterpriseApplicationsSolutions,
+            EnterpriseCollaboration,
+            EnergyUtilities,
+            FinancialServices,
+            Healthcare,
+            Insurance,
+            MarketingperationsCRM,
+            MobileAppDevelopment,
+            ModernSoftwareDelivery,
+            MicrosoftPartnership,
+            OperationalProcessExcellence,
+            PeopleChange,
+            TalentManagement,
+            TechnologySolutionServices
+
+        }
+        
 
         public string Position { get; set; }
         [Display(Name = "Start Date")]
