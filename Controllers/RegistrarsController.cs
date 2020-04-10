@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team6.DAL;
 using MIS4200Team6.Models;
 
@@ -18,7 +19,16 @@ namespace MIS4200Team6.Controllers
         // GET: Registrars
         public ActionResult Index()
         {
-            return View(db.Register.ToList());
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(db.Register.ToList());
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
+
+            //return View(db.Register.ToList());
         }
 
         // GET: Registrars/Details/5
@@ -67,12 +77,32 @@ namespace MIS4200Team6.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //Registrar registrar = db.Register.Find(id);
+            //if (registrar == null)
+            //{
+            //return HttpNotFound();
+            //}
+            //return View(registrar);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Registrar registrar = db.Register.Find(id);
             if (registrar == null)
             {
                 return HttpNotFound();
             }
-            return View(registrar);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (registrar.ID == memberID)
+            {
+                return View(registrar);
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
         }
 
         // POST: Registrars/Edit/5
