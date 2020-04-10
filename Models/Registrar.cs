@@ -24,8 +24,10 @@ namespace MIS4200Team6.Models
         [Phone]
         public string PhoneNumber { get; set; }
         [Display(Name = "Job Title")]
-       
-        
+        public string Birthday { get; set; }
+        [Display(Name = "Birthday")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+
         public string OperatingGroup { get; set; }
         [Display (Name = " Operating group")]
 
