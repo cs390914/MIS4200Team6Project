@@ -14,7 +14,7 @@ namespace MIS4200Team6.Models
         //ID of person being recognized
         public Guid ID { get; set; }
         [ForeignKey(name: "ID")]
-        //public virtual UserDetails UserDetails { get; set; }
+        public virtual Registrar Registrar { get; set; }
         public int? Stewardship { get; set; }
         public int? Culture { get; set; }
         [Display(Name = "Delivery Excellence")]

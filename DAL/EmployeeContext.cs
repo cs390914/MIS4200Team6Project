@@ -26,6 +26,7 @@ namespace MIS4200Team6.DAL
         // the value outside should generally be the plural of the class name
         // and is the name used to reference the entity in code
         public DbSet<Registrar> Register { get; set; }
+        public DbSet<CoreValueLeaderBoard> coreValueLeaderBoards {get; set; }
         public object Regeistars { get; internal set; }
     }
 

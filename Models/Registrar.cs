@@ -16,10 +16,10 @@ namespace MIS4200Team6.Models
         public string Email { get; set; }
         [Required]
         [Display(Name = "First Name")]
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
-        public string lastName { get; set; }
+        public string LastName { get; set; }
         [Display(Name = "Primary Phone")]
         [Phone]
         public string PhoneNumber { get; set; }
