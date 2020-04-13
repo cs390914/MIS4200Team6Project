@@ -38,7 +38,7 @@ namespace MIS4200Team6.Controllers
                     userSearch = userSearch.Where(c => c.LastName.Contains(s2) &&
                    c.FirstName.Contains(s1)).OrderBy(c => c.LastName); // note that this uses &&, not ||
                 }
-                return View(userSearch.ToList());
+                
             }
             
 
