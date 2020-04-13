@@ -40,7 +40,7 @@ namespace MIS4200Team6.Controllers
                 }
                 return View(userSearch.ToList());
             }
-            return View(db.Register.ToList());
+            
 
 
             if (User.Identity.IsAuthenticated)
