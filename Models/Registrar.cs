@@ -10,29 +10,27 @@ namespace MIS4200Team6.Models
     {
         [Required]
         public Guid ID { get; set; }
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-        [Required]
-        [Display(Name = "First Name")]
+        
+
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
+        public string EmailAddress { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+
         public string LastName { get; set; }
         [Display(Name = "Primary Phone")]
         [Phone]
-        public string PhoneNumber { get; set; }
-        [Display(Name = "Job Title")]
+        
         public string Birthday { get; set; }
         [Display(Name = "Birthday")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
 
         public string OperatingGroup { get; set; }
         [Display (Name = " Operating group")]
-
         public Group OGroup { get; set; }
-
         public enum Group
         {
             CustomerExperienceDesign,
@@ -54,9 +52,28 @@ namespace MIS4200Team6.Models
             TechnologySolutionServices
 
         }
-        
 
-        public string Position { get; set; }
+ 
+        [Display(Name = "Job Positions")]
+        public jobs Centric { get; set; }
+        public enum jobs
+        {
+            Consultant,
+        SeniorConsultant = 1,
+        Manager = 2,
+        Architect = 3,
+        SeniorManager = 4,
+         SeniorArchitect = 5,
+         PrincipalArchitect = 6,
+          Partner = 7
+
+        }
+
+
+
+
+
+        
         [Display(Name = "Start Date")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }

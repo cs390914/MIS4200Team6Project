@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using MIS4200Team6.DAL;
 using MIS4200Team6.Models;
 
@@ -17,42 +16,9 @@ namespace MIS4200Team6.Controllers
         private EmployeeContext db = new EmployeeContext();
 
         // GET: Registrars
-        public ActionResult Index(string searchString)
-        
+        public ActionResult Index()
         {
-            var userSearch = from o in db.Register select o;
-            string[] userNames; // declare the array to hold pieces of the string
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                userNames = searchString.Split(' '); // split the string on spaces
-                if (userNames.Count() == 1) // there is only one string so it could be
-                                            // either the first or last name
-                {
-                    userSearch = userSearch.Where(c => c.LastName.Contains(searchString) ||
-                   c.FirstName.Contains(searchString)).OrderBy(c => c.LastName);
-                }
-                else //if you get here there were at least two strings so extract them and test
-                {
-                    string s1 = userNames[0];
-                    string s2 = userNames[1];
-                    userSearch = userSearch.Where(c => c.LastName.Contains(s2) &&
-                   c.FirstName.Contains(s1)).OrderBy(c => c.LastName); // note that this uses &&, not ||
-                }
-                
-            }
-            
-
-
-            if (User.Identity.IsAuthenticated)
-            {
-                return View(db.Register.ToList());
-            }
-            else
-            {
-                return View("NotAuthenticated");
-            }
-
-            //return View(db.Register.ToList());
+            return View(db.Register.ToList());
         }
 
         // GET: Registrars/Details/5
@@ -81,7 +47,7 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,firstName,lastName,PhoneNumber,OperatingGroup,OGroup,Position,hireDate")] Registrar registrar)
+        public ActionResult Create([Bind(Include = "ID,Email,FirstName,EmailAddress,LastName,Birthday,OperatingGroup,OGroup,JobTitle,Centric,Position,hireDate")] Registrar registrar)
         {
             if (ModelState.IsValid)
             {
@@ -101,32 +67,12 @@ namespace MIS4200Team6.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Registrar registrar = db.Register.Find(id);
-            //if (registrar == null)
-            //{
-            //return HttpNotFound();
-            //}
-            //return View(registrar);
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Registrar registrar = db.Register.Find(id);
             if (registrar == null)
             {
                 return HttpNotFound();
             }
-            Guid memberID;
-            Guid.TryParse(User.Identity.GetUserId(), out memberID);
-            if (registrar.ID == memberID)
-            {
-                return View(registrar);
-            }
-            else
-            {
-                return View("NotAuthenticated");
-            }
+            return View(registrar);
         }
 
         // POST: Registrars/Edit/5
@@ -134,7 +80,7 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,firstName,lastName,PhoneNumber,OperatingGroup,OGroup,Position,hireDate")] Registrar registrar)
+        public ActionResult Edit([Bind(Include = "ID,Email,FirstName,EmailAddress,LastName,Birthday,OperatingGroup,OGroup,JobTitle,Centric,Position,hireDate")] Registrar registrar)
         {
             if (ModelState.IsValid)
             {

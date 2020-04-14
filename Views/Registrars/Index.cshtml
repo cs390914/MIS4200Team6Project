@@ -7,30 +7,23 @@
 <h2>Index</h2>
 
 <p>
-  <div class="col-md-6">
-    @using (Html.BeginForm("Index", "Registrars", FormMethod.Get))
-    {
-        <p>
-            Search by Employee Name (first, last, both) <span class="glyphicon glyphicon-search"></span>
-            @Html.TextBox("searchString")
-            <input type="submit" value="Search" />
-        </p>
-    }
-</div>  
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        
+
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            @Html.DisplayNameFor(model => model.EmailAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Birthday)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OperatingGroup)
@@ -38,9 +31,11 @@
         <th>
             @Html.DisplayNameFor(model => model.OGroup)
         </th>
+        
         <th>
-            @Html.DisplayNameFor(model => model.Position)
+            @Html.DisplayNameFor(model => model.Centric)
         </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.hireDate)
         </th>
@@ -49,17 +44,18 @@
 
 @foreach (var item in Model) {
     <tr>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.firstName)
+            @Html.DisplayFor(modelItem => item.EmailAddress)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.lastName)
+            @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
+            @Html.DisplayFor(modelItem => item.Birthday)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OperatingGroup)
@@ -67,14 +63,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.OGroup)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Position)
+            @Html.DisplayFor(modelItem => item.Centric)
         </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.hireDate)
         </td>
         <td>
-            
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
