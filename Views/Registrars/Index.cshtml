@@ -9,6 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="col-md-6">
+    @using (Html.BeginForm("Index", "Registrars", FormMethod.Get))
+    {
+        <p>
+            Search by employee name (first, last, both) <span class="glyphicon glypchicon-search"></span>
+            @Html.TextBox("searchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+</div>
 <table class="table">
     <tr>
         
