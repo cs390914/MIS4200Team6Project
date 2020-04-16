@@ -254,6 +254,7 @@
     <Content Include="Views\CoreValueLeaderBoards\Details.cshtml" />
     <Content Include="Views\CoreValueLeaderBoards\Edit.cshtml" />
     <Content Include="Views\CoreValueLeaderBoards\Index.cshtml" />
+    <Content Include="Views\Registrars\NotAuthenticated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
