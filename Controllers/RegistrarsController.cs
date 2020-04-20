@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team6.DAL;
 using MIS4200Team6.Models;
 
@@ -86,7 +87,9 @@ namespace MIS4200Team6.Controllers
         {
             if (ModelState.IsValid)
             {
-                registrar.ID = Guid.NewGuid();
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                registrar.ID = memberID;
                 db.Register.Add(registrar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -107,7 +110,17 @@ namespace MIS4200Team6.Controllers
             {
                 return HttpNotFound();
             }
-            return View(registrar);
+           
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (registrar.ID == memberID)
+            {
+                return View(registrar);
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
         }
 
         // POST: Registrars/Edit/5

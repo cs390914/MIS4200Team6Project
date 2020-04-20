@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MIS4200Team6.Models.Registrar>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Empolyee Directory";
 }
 
 <h2>Empolyee Directory</h2>
@@ -54,36 +54,40 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OperatingGroup)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OGroup)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Centric)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.hireDate)
-        </td>
-       
-    </tr>
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Birthday)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OperatingGroup)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OGroup)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Centric)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.hireDate)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
 }
 
 </table>
