@@ -101,19 +101,23 @@ namespace MIS4200Team6.Controllers
         // GET: Registrars/Edit/5
         public ActionResult Edit(Guid? id)
         {
+            Guid memberID;
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                id = memberID;
             }
+     
             Registrar registrar = db.Register.Find(id);
             if (registrar == null)
             {
                 return HttpNotFound();
             }
            
-            Guid memberID;
-            Guid.TryParse(User.Identity.GetUserId(), out memberID);
-            if (registrar.ID == memberID)
+            Guid memberID2;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID2);
+            if (registrar.ID == memberID2)
             {
                 return View(registrar);
             }
