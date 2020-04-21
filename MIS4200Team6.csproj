@@ -256,6 +256,7 @@
     <Content Include="Views\CoreValueLeaderBoards\Index.cshtml" />
     <Content Include="Views\Registrars\NotAuthenticated.cshtml" />
     <Content Include="Views\CoreValueLeaderBoards\NotAuthenticated.cshtml" />
+    <Content Include="Views\CoreValueLeaderBoards\EmailSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
