@@ -33,6 +33,12 @@ namespace MIS4200Team6.Models
         public Group OGroup { get; set; }
         public enum Group
         {
+            Boston,
+            Charlotte,
+            Chicago,
+            Cincinnati,
+            Cleveland,
+            Columbus,
             CustomerExperienceDesign,
             DataAnalytics,
             Digital,
@@ -41,14 +47,21 @@ namespace MIS4200Team6.Models
             EnergyUtilities,
             FinancialServices,
             Healthcare,
+            India,
+            Indianapolis,
             Insurance,
-            MarketingperationsCRM,
+            Louisville,
+            MarketingOperationsCRM,
+            Miami,
             MobileAppDevelopment,
             ModernSoftwareDelivery,
             MicrosoftPartnership,
             OperationalProcessExcellence,
             PeopleChange,
+            Seattle,
+            StLouis,
             TalentManagement,
+            Tampa,
             TechnologySolutionServices
 
         }
