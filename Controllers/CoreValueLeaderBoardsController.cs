@@ -15,7 +15,7 @@ namespace MIS4200Team6.Controllers
         private EmployeeContext db = new EmployeeContext();
 
         // GET: CoreValueLeaderBoards
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             if (User.Identity.IsAuthenticated)
             {
