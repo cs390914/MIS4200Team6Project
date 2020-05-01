@@ -18,17 +18,8 @@ namespace MIS4200Team6.Controllers
         // GET: CoreValueLeaderBoards
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var coreValueLeaderBoards = db.coreValueLeaderBoards.Include(c => c.Registrar);
-                return View(coreValueLeaderBoards.ToList());
-            }
-            else
-            {
-                return View("NotAuthenticated");
-            }
-
-
+            var coreValueLeaderBoards = db.coreValueLeaderBoards.Include(c => c.Registrar);
+            return View(coreValueLeaderBoards.ToList());
         }
 
         // GET: CoreValueLeaderBoards/Details/5

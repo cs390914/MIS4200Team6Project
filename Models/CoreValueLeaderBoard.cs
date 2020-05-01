@@ -12,8 +12,9 @@ namespace MIS4200Team6.Models
         public int leaderboardID { get; set; }
 
         //ID of person being recognized
+        [Display(Name = "Employee Name")]
         public Guid ID { get; set; }
-        [ForeignKey(name: "ID")]
+        [ForeignKey (name:"ID")]
         public virtual Registrar Registrar { get; set; }
         public enum Values
         {

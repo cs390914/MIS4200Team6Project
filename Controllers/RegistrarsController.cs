@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using MIS4200Team6.DAL;
 using MIS4200Team6.Models;
 
@@ -15,46 +14,11 @@ namespace MIS4200Team6.Controllers
     public class RegistrarsController : Controller
     {
         private EmployeeContext db = new EmployeeContext();
-        private string searchString;
 
         // GET: Registrars
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
-            
-
-            if (User.Identity.IsAuthenticated)
-             {
-                var userSearch = from o in db.Register select o;
-                string[] userNames; // declare the array to hold pieces of the string
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    userNames = searchString.Split(' '); // split the string on spaces
-                    if (userNames.Count() == 1) // there is only one string so it could be
-                                                // either the first or last name
-                    {
-                        userSearch = userSearch.Where(c => c.EmailAddress.Contains(searchString) ||
-                       c.FirstName.Contains(searchString)).OrderBy(c => c.EmailAddress);
-                    }
-                    else //if you get here there were at least two strings so extract them and test
-                    {
-                        string s1 = userNames[0];
-                        string s2 = userNames[1];
-                        userSearch = userSearch.Where(c => c.EmailAddress.Contains(s2) &&
-                       c.FirstName.Contains(s1)).OrderBy(c => c.EmailAddress); // note that this uses &&, not ||
-                    }
-                    //return View(userSearch.ToList());
-                }
-
-                return View(userSearch.ToList());
-
-            }
-             else
-             {
-                 return View("NotAuthenticated");
-             }
-
-
-
+            return View(db.Register.ToList());
         }
 
         // GET: Registrars/Details/5
@@ -83,13 +47,11 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,FirstName,EmailAddress,LastName,Birthday,OperatingGroup,OGroup,JobTitle,Centric,Position,hireDate")] Registrar registrar)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,EmailAddress,PhoneNumber,Birthday,OGroup,Centric,hireDate")] Registrar registrar)
         {
             if (ModelState.IsValid)
             {
-                Guid memberID;
-                Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                registrar.ID = memberID;
+                registrar.ID = Guid.NewGuid();
                 db.Register.Add(registrar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,30 +63,16 @@ namespace MIS4200Team6.Controllers
         // GET: Registrars/Edit/5
         public ActionResult Edit(Guid? id)
         {
-            Guid memberID;
             if (id == null)
             {
-               
-                Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                id = memberID;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-     
             Registrar registrar = db.Register.Find(id);
             if (registrar == null)
             {
                 return HttpNotFound();
             }
-           
-            Guid memberID2;
-            Guid.TryParse(User.Identity.GetUserId(), out memberID2);
-            if (registrar.ID == memberID2)
-            {
-                return View(registrar);
-            }
-            else
-            {
-                return View("NotAuthenticated");
-            }
+            return View(registrar);
         }
 
         // POST: Registrars/Edit/5
@@ -132,7 +80,7 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,FirstName,EmailAddress,LastName,Birthday,OperatingGroup,OGroup,JobTitle,Centric,Position,hireDate")] Registrar registrar)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,EmailAddress,PhoneNumber,Birthday,OGroup,Centric,hireDate")] Registrar registrar)
         {
             if (ModelState.IsValid)
             {

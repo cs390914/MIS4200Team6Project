@@ -11,27 +11,43 @@ namespace MIS4200Team6.Models
         [Required]
         public Guid ID { get; set; }
         
-        public string First1Name { get; set; }
-        [Required]
+        [Display(Name = "Name")]
+        public string FullName => FirstName + " " + LastName;
+        
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
         [Required]
+        public string FirstName { get; set; }
+
+
         [Display(Name = "Last Name")]
-        public string EmailAddress { get; set; }
+        [Required]
+        public string LastName { get; set; }
+
+        
+
+
+        [Display(Name = "Email")]
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
-
-        public string LastName { get; set; }
-        [Display(Name = "Primary Phone")]
-        [Phone]
+        public string EmailAddress { get; set; }
         
-        public string Birthday { get; set; }
+       
+
+        [Display(Name = "Primary Phone")]
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^([0-9]{3})-([0-9]{3})-([0-9]{4})$",
+                   ErrorMessage = "Please enter phone number in format xxx-xxx-xxxx.")]
+        //[DisplayFormat(DataFormatString = "\\d{3}-\\d{3}-\\d{4}", ApplyFormatInEditMode = true)]
+        public string PhoneNumber { get; set; }
+
         [Display(Name = "Birthday")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public string Birthday { get; set; }
 
-        public string OperatingGroup { get; set; }
-        [Display (Name = " Operating group")]
+
+        [Display(Name = " Operating group")]
+       
         public Group OGroup { get; set; }
         public enum Group
         {
