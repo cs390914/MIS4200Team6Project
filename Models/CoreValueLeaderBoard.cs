@@ -15,24 +15,25 @@ namespace MIS4200Team6.Models
         public Guid ID { get; set; }
         [ForeignKey(name: "ID")]
         public virtual Registrar Registrar { get; set; }
-        public int? Stewardship { get; set; }
-        public int? Culture { get; set; }
-        [Display(Name = "Delivery Excellence")]
-        public int? Delivery_Excellence { get; set; }
-        public int? Innovation { get; set; }
-        [Display(Name = "Greater Good")]
-        public int? Greater_Good { get; set; }
-        [Display(Name = "Integrity and Openness")]
-        public int? Integrity_And_Openness { get; set; }
-        public int? Balance { get; set; }
-        [Display(Name = "Total Points")]
-        public int? TotalPoints
+        public enum Values
         {
-            get
-            {
-                return Stewardship + Culture + Delivery_Excellence + Innovation + Greater_Good + Integrity_And_Openness + Balance;
-            }
+            stewardship,
+            Culture = 1,
+            DeliveringExcellence = 2,
+            Innovation = 3,
+            GreaterGood = 4,
+            IntrgrityandOpenness = 5,
+            Balance = 6,
+
         }
+
+        [Display(Name = " Reason for Recognition")]
+        public string Comment { get; set; }
+
+        [Display(Name = "Recognition Date")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime TodaysDate { get; set; }
+
 
 
     }

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Recognition Leaderboard</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,28 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Registrar.EmailAddress)
+            @Html.DisplayNameFor(model => model.Registrar.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Stewardship)
+            @Html.DisplayNameFor(model => model.Comment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Culture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delivery_Excellence)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Innovation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Greater_Good)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Integrity_And_Openness)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Balance)
+            @Html.DisplayNameFor(model => model.TodaysDate)
         </th>
         <th></th>
     </tr>
@@ -41,28 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Registrar.EmailAddress)
+            @Html.DisplayFor(modelItem => item.Registrar.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Stewardship)
+            @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Culture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delivery_Excellence)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Innovation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Greater_Good)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Integrity_And_Openness)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Balance)
+            @Html.DisplayFor(modelItem => item.TodaysDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.leaderboardID }) |
