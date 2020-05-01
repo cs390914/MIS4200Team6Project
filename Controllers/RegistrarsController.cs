@@ -19,28 +19,35 @@ namespace MIS4200Team6.Controllers
         // GET: Registrars
         public ActionResult Index(string searchString)
         {
-              var userSearch = from o in db.Register select o;
-            string[] userNames; // declare the array to hold pieces of the string
-            if (!String.IsNullOrEmpty(searchString))
+            if (User.Identity.IsAuthenticated)
             {
-                userNames = searchString.Split(' '); // split the string on spaces
-                if (userNames.Count() == 1) // there is only one string so it could be
-                                            // either the first or last name
+                var userSearch = from o in db.Register select o;
+                string[] userNames; // declare the array to hold pieces of the string
+                if (!String.IsNullOrEmpty(searchString))
                 {
-                    userSearch = userSearch.Where(c => c.LastName.Contains(searchString) ||
-                   c.FirstName.Contains(searchString)).OrderBy(c => c.LastName);
+                    userNames = searchString.Split(' '); // split the string on spaces
+                    if (userNames.Count() == 1) // there is only one string so it could be
+                                                // either the first or last name
+                    {
+                        userSearch = userSearch.Where(c => c.LastName.Contains(searchString) ||
+                       c.FirstName.Contains(searchString)).OrderBy(c => c.LastName);
+                    }
+                    else //if you get here there were at least two strings so extract them and test
+                    {
+                        string s1 = userNames[0];
+                        string s2 = userNames[1];
+                        userSearch = userSearch.Where(c => c.LastName.Contains(s2) &&
+                       c.FirstName.Contains(s1)).OrderBy(c => c.LastName); // note that this uses &&, not ||
+                    }
                 }
-                else //if you get here there were at least two strings so extract them and test
-                {
-                    string s1 = userNames[0];
-                    string s2 = userNames[1];
-                    userSearch = userSearch.Where(c => c.LastName.Contains(s2) &&
-                   c.FirstName.Contains(s1)).OrderBy(c => c.LastName); // note that this uses &&, not ||
-                }
+                
                 return View(userSearch.ToList());
             }
-            
-            return View(db.Register.ToList());
+
+            else
+            {
+                return View("NotAuthenticated");
+            }
 
         }
 
