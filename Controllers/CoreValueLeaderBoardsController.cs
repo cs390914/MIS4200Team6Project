@@ -63,16 +63,15 @@ namespace MIS4200Team6.Controllers
             {
                 db.coreValueLeaderBoards.Add(coreValueLeaderBoard);
                 db.SaveChanges();
-                var email = coreValueLeaderBoard.Registrar.EmailAddress;
+                var email = db.Register.Find(coreValueLeaderBoard.ID).EmailAddress;
                 SmtpClient myClient = new SmtpClient();
-                // the following line has to contain the email address and password of someone
-                // authorized to use the email server (you will need a valid Ohio account/password
-                // for this to work)
-                myClient.Credentials = new NetworkCredential("jb213215@ohio.edu", "insert Jake's Password");
+                
+                myClient.Credentials = new NetworkCredential("jakebutler67@gmail.com", "Snakira67!");
                 MailMessage myMessage = new MailMessage();
-                // the syntax here is email address, username (that will appear in the email)
-                MailAddress from = new MailAddress("jb213215@ohio.edu", "SysAdmin");
+                
+                MailAddress from = new MailAddress("jakebutler67@gmail.com", "SysAdmin");
                 myMessage.From = from;
+                myMessage.From = new MailAddress(email.ToString());
                 myMessage.To.Add(email); // this should be replaced with model data
                                                             // as shown at the end of this document
                 myMessage.Subject = "MVC Email test";
