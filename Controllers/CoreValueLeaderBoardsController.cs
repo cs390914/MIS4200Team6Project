@@ -49,7 +49,7 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "leaderboardID,ID,Comment,TodaysDate")] CoreValueLeaderBoard coreValueLeaderBoard)
+        public ActionResult Create([Bind(Include = "leaderboardID,ID,Centric,Comment,TodaysDate")] CoreValueLeaderBoard coreValueLeaderBoard)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace MIS4200Team6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "leaderboardID,ID,Comment,TodaysDate")] CoreValueLeaderBoard coreValueLeaderBoard)
+        public ActionResult Edit([Bind(Include = "leaderboardID,ID,Centric,Comment,TodaysDate")] CoreValueLeaderBoard coreValueLeaderBoard)
         {
             if (ModelState.IsValid)
             {

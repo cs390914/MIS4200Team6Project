@@ -16,6 +16,9 @@ namespace MIS4200Team6.Models
         public Guid ID { get; set; }
         [ForeignKey (name:"ID")]
         public virtual Registrar Registrar { get; set; }
+
+        [Display(Name = "Core Vaule being recognized")]
+        public Values Centric { get; set;}
         public enum Values
         {
             stewardship,
