@@ -5,7 +5,16 @@
 }
 
 <h2>Index</h2>
-
+<div class="col-md-6">
+    @using (Html.BeginForm("Index", "Registrars", FormMethod.Get))
+    {
+    <p>
+        Search by Employee Name (first, last, both) <span class="glyphicon glyphicon-search"></span>
+        @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
