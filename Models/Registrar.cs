@@ -11,7 +11,9 @@ namespace MIS4200Team6.Models
         [Required]
         public Guid ID { get; set; }
         
-
+        public string First1Name { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
